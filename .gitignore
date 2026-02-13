@@ -15,6 +15,7 @@ venv/
 backend/data/
 *.sqlite
 *.db
+*.log
 
 # ===== node =====
 node_modules/
@@ -23,6 +24,10 @@ out/
 dist/
 frontend/.env
 frontend/.env.local
+
+# ===== local artifacts =====
+tmp_*.json
+*.tmp
 
 # ===== OS/IDE =====
 .DS_Store

@@ -1,3 +1,9 @@
+"""WebSocket connection manager for simulation live updates.
+
+This module tracks subscribed sockets per simulation and broadcasts
+event/tick/status payloads to connected frontend clients.
+"""
+
 import asyncio
 from collections import defaultdict
 from typing import Any
@@ -6,6 +12,8 @@ from fastapi import WebSocket
 
 
 class ConnectionManager:
+    """In-memory fan-out manager keyed by simulation id."""
+
     def __init__(self) -> None:
         self._connections: dict[int, list[WebSocket]] = defaultdict(list)
         self._lock = asyncio.Lock()

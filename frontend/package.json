@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "d3-force": "^3.0.0",
     "next": "14.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -16,6 +17,7 @@
   "devDependencies": {
     "typescript": "5.5.4",
     "@types/node": "20.14.12",
+    "@types/d3-force": "^3.0.10",
     "@types/react": "18.2.64",
     "@types/react-dom": "18.2.21",
     "eslint": "8.57.0",

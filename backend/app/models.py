@@ -1,3 +1,5 @@
+"""Persistence models for simulations, agents, events, and reports."""
+
 from enum import Enum
 from typing import Any, Optional
 
@@ -5,13 +7,18 @@ from sqlmodel import Field, JSON, SQLModel
 
 
 class SimulationStatus(str, Enum):
+    """Finite state machine for simulation execution lifecycle."""
+
     created = "created"
     running = "running"
+    paused = "paused"
     stopped = "stopped"
     completed = "completed"
 
 
 class Simulation(SQLModel, table=True):
+    """Simulation run metadata and execution state."""
+
     id: Optional[int] = Field(default=None, primary_key=True)
     goal: str
     status: SimulationStatus = Field(default=SimulationStatus.created)
@@ -21,6 +28,8 @@ class Simulation(SQLModel, table=True):
 
 
 class Agent(SQLModel, table=True):
+    """Agent identity, role, and rolling memory snapshot."""
+
     id: Optional[int] = Field(default=None, primary_key=True)
     simulation_id: int = Field(index=True)
     name: str
@@ -29,6 +38,8 @@ class Agent(SQLModel, table=True):
 
 
 class Event(SQLModel, table=True):
+    """Event stream record emitted by agents/system per simulation step."""
+
     id: Optional[int] = Field(default=None, primary_key=True)
     simulation_id: int = Field(index=True)
     step: int = Field(default=0)
@@ -36,3 +47,16 @@ class Event(SQLModel, table=True):
     source_agent: Optional[str] = None
     target_agent: Optional[str] = None
     content: str = ""
+
+
+class SimulationReport(SQLModel, table=True):
+    """Versioned summarizer report persisted after run completion."""
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    simulation_id: int = Field(index=True)
+    version: int = Field(default=1)
+    generator: str = Field(default="summarizer-v1")
+    title: str = Field(default="")
+    markdown: str = Field(default="")
+    report_json: dict[str, Any] = Field(default_factory=dict, sa_type=JSON)
+    created_at: str = Field(default="")
