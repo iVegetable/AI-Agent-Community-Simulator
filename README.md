@@ -5,6 +5,10 @@ Multi-agent community simulation project with:
 - `Next.js` frontend (interactive visualization for the resource scenario)
 - utility scripts for setup and realism acceptance/benchmark checks
 
+## UI Demo
+
+![UI Demo](./ui-demo-auto.gif)
+
 ## What This Project Does
 
 The project simulates agent-to-agent discussion and negotiation, then evaluates outcomes with quantitative indicators.
