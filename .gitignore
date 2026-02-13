@@ -28,6 +28,7 @@ frontend/.env.local
 # ===== local artifacts =====
 tmp_*.json
 *.tmp
+deep-research-report.md
 
 # ===== OS/IDE =====
 .DS_Store
