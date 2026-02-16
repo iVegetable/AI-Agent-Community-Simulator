@@ -44,6 +44,7 @@ jobs:
       - name: Run backend test suite
         env:
           PYTHONPATH: .
+          DATABASE_URL: sqlite:///./test.db
         run: |
           pytest tests -q
 
