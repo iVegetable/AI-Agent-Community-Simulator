@@ -1,4 +1,5 @@
 # AI Agent Community Simulator
+[![CI Gate](https://github.com/iVegetable/AI-Agent-Community-Simulator/actions/workflows/ci.yml/badge.svg)](https://github.com/iVegetable/AI-Agent-Community-Simulator/actions/workflows/ci.yml)
 
 Multi-agent community simulation project with:
 - `FastAPI` backend (simulation runtime, reporting, realism scoring)
